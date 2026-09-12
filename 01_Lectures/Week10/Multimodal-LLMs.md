@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # โมเดลภาษาข้ามโมดัล (Multimodal LLMs)
 
-⬅️ กลับไปที่ [[Week10-MOC|MOC สัปดาห์ 10]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week10-MOC|MOC สัปดาห์ 10]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Multimodal LLM (MLLM)** — โมเดลภาษาที่ประมวลผลและ/หรือสร้างข้อมูลได้มากกว่าข้อความ เช่น ภาพ เสียง วิดีโอ
 - **Modality** — ประเภทข้อมูลหรือช่องทางรับรู้หนึ่ง ๆ (text, image, audio, video, code)
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **Projection Layer** — เลเยอร์เชื่อมที่แปลง output ของ encoder ให้อยู่ใน embedding space เดียวกับ text token
 - **Shared Conceptual Space** — พื้นที่ vector ร่วมที่ทุกโมดัลถูก map เข้าไป ทำให้เปรียบเทียบข้ามโมดัลได้โดยตรง
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### จาก Text-Only สู่ Multimodal LLM
 
@@ -50,7 +50,7 @@ LLM แบบดั้งเดิมอ่านและเขียนข้�
 > [!example] ตัวอย่างโมเดลบน Hugging Face
 > **CLIP** มี checkpoint ให้ลองใช้จริงที่ `openai/clip-vit-base-patch32` ส่วนโมเดลที่ทำตามสถาปัตยกรรม encoder → projection → LLM ตามที่อธิบายไว้ในสไลด์ ตัวอย่างที่ใช้กันแพร่หลายคือ **LLaVA** (Liu et al., 2023, "Visual Instruction Tuning") ซึ่งมีให้ใช้งานที่ `llava-hf/llava-1.5-7b-hf` โมเดล proprietary ที่มีความสามารถใกล้เคียงกันคือ GPT-4V/GPT-4o และงานวิจัยสำคัญอีกชิ้นที่ขยายแนวคิดนี้ไปถึง few-shot ข้ามโมดัลคือ **Flamingo** (Alayrac et al., 2022)
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart LR
@@ -64,4 +64,4 @@ flowchart LR
 **ตัวอย่าง:** pipeline นี้ตรงกับสไลด์ 10-1.2 "Putting It Together: The Full Pipeline" (หน้า 8) ซึ่งสรุปการไหลจาก raw input จนถึง output ของ MLLM
 
 ---
-➡️ กลับไปที่ [[Week10-MOC|MOC สัปดาห์ 10]]
+<span class="material-symbols-outlined">arrow_forward</span> กลับไปที่ [[Week10-MOC|MOC สัปดาห์ 10]]

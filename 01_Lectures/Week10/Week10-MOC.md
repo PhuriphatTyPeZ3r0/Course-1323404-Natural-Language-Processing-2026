@@ -10,19 +10,19 @@ source: "10-1_Multimodal_LLMs.pptx"
 
 # Week 10 — Beyond Text: Multimodal LLMs (MOC)
 
-⬅️ สัปดาห์ก่อนหน้า: [[Week9-MOC|MOC สัปดาห์ 9]]
+<span class="material-symbols-outlined">arrow_back</span> สัปดาห์ก่อนหน้า: [[Week9-MOC|MOC สัปดาห์ 9]]
 
-## ✅ เช็คลิสต์ก่อนเข้าเรียน
+## <span class="material-symbols-outlined">check_circle</span> เช็คลิสต์ก่อนเข้าเรียน
 
 - [ ] ทบทวนว่า embedding space และ similarity ทำงานอย่างไร (จาก Week 4 และ Week 9) — ดู [[Multimodal-LLMs]]
 - [ ] ทบทวนโครงสร้าง Transformer backbone แบบ autoregressive จาก Week 7-8 — ดู [[Multimodal-LLMs]]
 - [ ] ลองนึกภาพว่าจะแปลง "รูปภาพ" ให้กลายเป็น "token" ที่ LLM อ่านได้อย่างไร ก่อนเข้าเรียน — ดู [[Multimodal-LLMs]]
 
-## 📋 ภาพรวมสัปดาห์ 10 (สรุปย่อ)
+## <span class="material-symbols-outlined">assignment</span> ภาพรวมสัปดาห์ 10 (สรุปย่อ)
 
 สัปดาห์สุดท้ายของคอร์สนี้ขยายขอบเขตจาก NLP แบบข้อความล้วนไปสู่ **Multimodal LLM (MLLM)** ที่ประมวลผลและสร้างข้อมูลข้ามหลายโมดัล (text, image, audio, video) เนื้อหาเริ่มจากแนวคิด shared conceptual space ที่ map ทุกโมดัลเข้าสู่ numerical space เดียวกัน ตามด้วยสถาปัตยกรรมหลัก 3 ส่วนคือ modality encoders, projection layer (สะพานเชื่อมสำคัญที่สุด), และ core LLM backbone ปิดท้ายด้วยความสามารถจริงของ MLLM ทั้งการตีความภาพซับซ้อน (กราฟ, blueprint, code screenshot), การให้เหตุผลข้ามวิดีโอ/เสียง, และการสร้าง output แบบข้ามโมดัล (cross-modal generation)
 
-## 🗺️ แผนที่หัวข้อสัปดาห์ 10
+## <span class="material-symbols-outlined">map</span> แผนที่หัวข้อสัปดาห์ 10
 
 ```mermaid
 graph TD
@@ -37,7 +37,7 @@ graph TD
     style A fill:#38a169,color:#fff
 ```
 
-## 📚 โน้ตรายหัวข้อ
+## <span class="material-symbols-outlined">collections_bookmark</span> โน้ตรายหัวข้อ
 
 | หัวข้อ | เนื้อหาหลัก | หน้าสไลด์ |
 | --- | --- | --- |

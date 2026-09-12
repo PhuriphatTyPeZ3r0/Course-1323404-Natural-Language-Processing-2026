@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # โมเดลภาษาขนาดใหญ่สมัยใหม่ (Modern LLMs) — Llama 3/4, Prompting & PEFT
 
-⬅️ กลับไปที่ [[Week8-MOC|MOC สัปดาห์ 8]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week8-MOC|MOC สัปดาห์ 8]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Decoder-only LLM** — โมเดลภาษาที่สร้างข้อความทีละ token จากซ้ายไปขวาด้วย causal masking (มองเห็นเฉพาะ token ก่อนหน้า)
 - **Scaling Laws** — กฎที่บอกว่า loss ของโมเดลลดลงอย่างมีแบบแผนเมื่อเพิ่ม compute, data, และ parameter
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **LoRA (Low-Rank Adaptation)** — เทคนิค Parameter-Efficient Fine-Tuning ที่ freeze น้ำหนักเดิมแล้วเทรนเฉพาะ low-rank matrix ขนาดเล็ก
 - **RLHF / DPO** — วิธี align โมเดลให้ตอบตรงใจมนุษย์ ผ่าน reward model + RL (RLHF) หรือ optimize ตรงจาก preference pairs (DPO)
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### ทบทวน: จาก BERT/GPT สู่ LLM สมัยใหม่
 
@@ -81,7 +81,7 @@ $$W = W_0 + BA \quad (\text{rank } r \ll d)$$
 > [!tip] เคล็ดลับ
 > เลือก **prompting** ก่อนเสมอถ้าข้อมูลมีน้อยและต้องการ iterate เร็ว/รักษาความเป็นส่วนตัวของข้อมูล ส่วน **fine-tuning** ค่อยพิจารณาเมื่อ prompt ยาวซ้ำ ๆ กลายเป็นภาระ หรือต้องการยกระดับความแม่นยำเกินกว่าที่ prompt เพียงอย่างเดียวจะทำได้
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -95,4 +95,4 @@ flowchart TD
 **ตัวอย่าง:** pipeline นี้สรุปจากสไลด์ Lecture A slide 8 (Llama 3 Post-Training) ต่อเนื่องถึง Lecture B slide 10-17 (Fine-Tuning และ Deployment)
 
 ---
-➡️ กลับไปที่ [[Week8-MOC|MOC สัปดาห์ 8]]
+<span class="material-symbols-outlined">arrow_forward</span> กลับไปที่ [[Week8-MOC|MOC สัปดาห์ 8]]

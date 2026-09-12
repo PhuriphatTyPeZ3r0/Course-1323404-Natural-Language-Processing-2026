@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # การแทนคำด้วยเวกเตอร์ (Word Embeddings)
 
-⬅️ กลับไปที่ [[Week4-MOC|MOC สัปดาห์ 4]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week4-MOC|MOC สัปดาห์ 4]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Word Embedding** — เวกเตอร์ค่าจริงหนาแน่น (dense vector) ที่แทนความหมายของคำ เรียนรู้จากคลังข้อความขนาดใหญ่
 - **Skip-gram / CBOW** — สองวิธีฝึก word2vec: ทายบริบทจากคำกลาง (skip-gram) หรือทายคำกลางจากบริบท (CBOW)
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **Cosine Similarity** — ตัวชี้วัดความคล้ายระหว่างเวกเตอร์สองตัวโดยพิจารณามุมระหว่างเวกเตอร์
 - **Contrastive Learning** — วิธีฝึก embedding โดยดึงคู่ที่คล้ายกันเข้าใกล้และผลักคู่ที่ต่างกันออกจากกัน
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### จาก Symbolic สู่ Distributional Representation
 
@@ -70,7 +70,7 @@ word2vec (Mikolov et al., 2013, *"Efficient Estimation of Word Representations i
 > [!tip] เคล็ดลับ
 > จำความต่าง skip-gram กับ CBOW ง่าย ๆ ด้วยทิศทางการทาย: skip-gram = "1 คำ ทายหลายคำ" (skip ออกไปรอบ ๆ) ส่วน CBOW = "หลายคำ ทาย 1 คำ" (bag ของบริบท → คำกลาง)
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -86,4 +86,4 @@ flowchart TD
 **ตัวอย่าง:** สไลด์หน้า 5-6 แสดงว่าเมื่อฝึกเสร็จแล้ว เวกเตอร์ผลลัพธ์จะจับความสัมพันธ์เชิงความหมายได้ เช่น `v(king) − v(man) + v(woman) ≈ v(queen)` และสามารถนำเวกเตอร์ที่ฝึกจากคลังหนึ่งไปใช้ต่อ (pretrained) หรือปรับจูน (fine-tune) กับงานปลายทางอื่นได้โดยไม่ต้องฝึกใหม่ทั้งหมด
 
 ---
-➡️ กลับไปที่ [[Week4-MOC|MOC สัปดาห์ 4]]
+<span class="material-symbols-outlined">arrow_forward</span> กลับไปที่ [[Week4-MOC|MOC สัปดาห์ 4]]

@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # วากยสัมพันธ์และการแจงส่วนประโยค (Syntax and Parsing)
 
-⬅️ กลับไปที่ [[Week3-MOC|MOC สัปดาห์ 3]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week3-MOC|MOC สัปดาห์ 3]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Syntax Tree / Parse Tree** — โครงสร้างต้นไม้ที่แสดงความสัมพันธ์ทางไวยากรณ์ของคำในประโยค
 - **Constituency Parsing** — การแจงประโยคเป็นวลีที่ซ้อนกัน (nested phrases) ตาม phrase-structure grammar
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **Context-Free Grammar (CFG)** — ชุดกฎการเขียนแทนสัญลักษณ์ที่ใช้นิยามโครงสร้างประโยค
 - **CYK Algorithm** — อัลกอริทึม dynamic programming แบบ bottom-up ที่ตรวจสอบว่าประโยคถูกสร้างจาก CFG ได้หรือไม่
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### Syntax Tree คืออะไร
 
@@ -109,7 +109,7 @@ VB → "taught"
 
 **Cocke–Younger–Kasami (CYK/CKY) algorithm** เป็น bottom-up dynamic-programming parser ที่ตัดสินว่าประโยคหนึ่งสร้างได้จาก CFG หรือไม่ (และสร้างได้อย่างไร) โดยกำหนดให้ไวยากรณ์อยู่ใน **Chomsky Normal Form (CNF)** ก่อน (ทุกกฎต้องอยู่ในรูป $A \rightarrow BC$ หรือ $A \rightarrow \text{word}$)
 
-ขั้นตอนหลัก 4 ขั้น (ดูรายละเอียดใน 🖼️ Diagram): แปลงไวยากรณ์เป็น CNF → สร้างตาราง n×n รูปสามเหลี่ยม → ลองทุกจุดตัดรวม non-terminal จากช่วงย่อย → ตรวจว่า start symbol S ปรากฏใน cell บนสุดที่ครอบทั้งประโยคหรือไม่ ความซับซ้อนของอัลกอริทึมคือ $O(n^3 \cdot |G|)$ สำหรับประโยคความยาว n และไวยากรณ์ G — มีประสิทธิภาพเพียงพอสำหรับงาน parsing จริง
+ขั้นตอนหลัก 4 ขั้น (ดูรายละเอียดใน <span class="material-symbols-outlined">schema</span> Diagram): แปลงไวยากรณ์เป็น CNF → สร้างตาราง n×n รูปสามเหลี่ยม → ลองทุกจุดตัดรวม non-terminal จากช่วงย่อย → ตรวจว่า start symbol S ปรากฏใน cell บนสุดที่ครอบทั้งประโยคหรือไม่ ความซับซ้อนของอัลกอริทึมคือ $O(n^3 \cdot |G|)$ สำหรับประโยคความยาว n และไวยากรณ์ G — มีประสิทธิภาพเพียงพอสำหรับงาน parsing จริง
 
 ### เหตุผลที่ Syntax Tree สำคัญ
 
@@ -120,7 +120,7 @@ VB → "taught"
 > [!tip] เคล็ดลับ
 > จำ constituency vs dependency ด้วยภาพ: constituency คือ **"กล่องซ้อนกล่อง"** (วลีอยู่ในวลี) ส่วน dependency คือ **"ลูกศรระหว่างคำ"** (ไม่มีวลีเป็นตัวกลาง) และถ้าอยากเช็คคำตอบเร็ว ๆ ว่า tree ที่วาดเป็น dependency tree ถูกไหม ให้นับ node: dependency tree ต้องมี node เท่ากับจำนวนคำพอดี ถ้ามากกว่านั้นแสดงว่าคุณกำลังวาด constituency tree อยู่
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -135,4 +135,4 @@ flowchart TD
 **ตัวอย่าง:** อ้างอิงจากสไลด์หน้า 8 (The CYK Algorithm) ความซับซ้อนของอัลกอริทึมคือ $O(n^3 \cdot |G|)$ — เร็วพอสำหรับ parsing ประโยคจริงเมื่อเทียบกับการลองทุกวิธีตีความแบบ exhaustive search
 
 ---
-➡️ กลับไปที่ [[Week3-MOC|MOC สัปดาห์ 3]]
+<span class="material-symbols-outlined">arrow_forward</span> กลับไปที่ [[Week3-MOC|MOC สัปดาห์ 3]]

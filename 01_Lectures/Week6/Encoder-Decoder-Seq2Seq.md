@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # สถาปัตยกรรม Encoder-Decoder และ Seq2Seq (Sequence-to-Sequence Learning)
 
-⬅️ กลับไปที่ [[Week6-MOC|MOC สัปดาห์ 6]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week6-MOC|MOC สัปดาห์ 6]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Encoder-Decoder** — สถาปัตยกรรมสองส่วน ส่วนแรกอ่านและบีบอัดอินพุต ส่วนที่สองสร้างเอาต์พุตจากผลบีบอัดนั้น
 - **Context Vector (C)** — เวกเตอร์ขนาดคงที่ที่ encoder สรุปข้อมูลทั้งประโยคอินพุตไว้
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **Information Bottleneck** — ปัญหาที่ context vector ขนาดคงที่ไม่พอเก็บข้อมูลเมื่ออินพุตยาวขึ้น
 - **Beam Search** — กลยุทธ์การถอดรหัสที่เก็บลำดับความน่าจะเป็นสูงสุดหลายเส้นทางไว้พร้อมกัน
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### จาก Sequence Labeling สู่ Seq2Seq
 
@@ -64,7 +64,7 @@ date: 2026-09-12
 
 ใน Hugging Face แนวคิด Seq2Seq ทั้งหมดนี้ (encoder-decoder + decoding strategies) ถูกครอบด้วยคลาส `AutoModelForSeq2SeqLM` ซึ่งใช้กับโมเดลอย่าง T5 หรือ BART สำหรับงานแปลภาษาและสรุปความ
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -82,4 +82,4 @@ flowchart TD
 **ตัวอย่าง:** ตามสไลด์ 6-1 หน้า 8 แสดงตัวอย่างแปล "The cat" → "Le chat" ด้วย encoder-decoder แบบ RNN และหน้า 9 แสดงกราฟ BLEU ที่ตกลงเมื่อความยาวประโยคเพิ่มขึ้น ส่วนกลยุทธ์การถอดรหัสอยู่ที่หน้า 16 (beam width $k=2$)
 
 ---
-➡️ ต่อไป: [[Attention-Mechanism]]
+<span class="material-symbols-outlined">arrow_forward</span> ต่อไป: [[Attention-Mechanism]]

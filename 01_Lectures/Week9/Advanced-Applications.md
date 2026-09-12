@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # การประยุกต์ใช้ขั้นสูง: RAG และ Vector Search (Retrieval-Augmented Generation)
 
-⬅️ กลับไปที่ [[Week9-MOC|MOC สัปดาห์ 9]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week9-MOC|MOC สัปดาห์ 9]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **RAG (Retrieval-Augmented Generation)** — สถาปัตยกรรมที่รวม retriever (ค้นข้อมูล) กับ generator (สร้างข้อความ) เข้าด้วยกัน
 - **Dense Passage Retrieval (DPR)** — bi-encoder ที่เข้ารหัส query และ passage เป็น dense vector แล้ววัดความคล้ายด้วย dot product
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **Hybrid Search** — การผสม dense embedding similarity กับ sparse keyword search (เช่น BM25)
 - **Agentic RAG** — RAG ที่โมเดลตัดสินใจเองว่าจะ retrieve เพิ่มเมื่อไหร่ และแก้ไขคำตอบตัวเองแบบวนซ้ำ
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### ข้อจำกัดของ Parametric Memory และแนวคิด RAG
 
@@ -71,7 +71,7 @@ DPR เทรนด้วย contrastive loss ที่ใช้ hard negative �
 > [!tip] เคล็ดลับ
 > RAG กับ fine-tuning ไม่ใช่ทางเลือกที่ต้องเลือกอย่างใดอย่างหนึ่ง — RAG เปลี่ยน "สิ่งที่โมเดลรู้" โดยไม่ต้องเทรนใหม่ (แค่เปลี่ยน corpus) ส่วน fine-tuning เปลี่ยน "พฤติกรรม" ของโมเดล ระบบ production จำนวนมากใช้ทั้งสองอย่างร่วมกัน
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart LR
@@ -88,4 +88,4 @@ flowchart LR
 **ตัวอย่าง:** pipeline นี้สรุปจาก Lecture A slide 3-8 (RAG framework + DPR) และ Lecture B slide 2-8 (ChromaDB + context injection)
 
 ---
-➡️ กลับไปที่ [[Week9-MOC|MOC สัปดาห์ 9]]
+<span class="material-symbols-outlined">arrow_forward</span> กลับไปที่ [[Week9-MOC|MOC สัปดาห์ 9]]

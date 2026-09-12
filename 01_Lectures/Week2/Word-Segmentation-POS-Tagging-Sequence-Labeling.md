@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # การตัดคำ, การกำกับชนิดคำ และ Sequence Labeling (Word Segmentation, POS Tagging & Sequence Labeling)
 
-⬅️ กลับไปที่ [[Week2-MOC|MOC สัปดาห์ 2]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week2-MOC|MOC สัปดาห์ 2]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Word Segmentation** — การแบ่งข้อความต่อเนื่องออกเป็นหน่วยคำ จำเป็นมากสำหรับภาษาที่ไม่มีช่องว่างระหว่างคำ
 - **POS Tagging (Part-of-Speech Tagging)** — การกำกับหมวดหมู่ไวยากรณ์ให้แต่ละคำในประโยค เช่น NOUN, VERB
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **Conditional Random Field (CRF)** — โมเดล discriminative ที่ให้คะแนนทั้งลำดับ tag โดยใช้ feature ที่ซับซ้อนและ overlap กันได้
 - **BIO Tagging Scheme** — รูปแบบการกำกับ label ระดับ token สำหรับงาน sequence labeling เช่น NER (B- เริ่ม, I- ต่อเนื่อง, O- ไม่ใช่ entity)
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### 1. Word Segmentation (การตัดคำ)
 
@@ -64,7 +64,7 @@ $$\hat{t}_{1..n} = \arg\max_t \prod_i P(w_i \mid t_i) \cdot P(t_i \mid t_{i-1})$
 
 โดยตั้งสมมติฐานว่าแต่ละ tag ขึ้นกับ tag ก่อนหน้าเพียงตัวเดียว (Markov assumption) และแต่ละคำขึ้นกับ tag ของตัวเองเท่านั้น
 
-**Viterbi Decoding** — การลองทุกลำดับ tag ที่เป็นไปได้จะเป็น exponential ดังนั้น Viterbi จึงใช้ dynamic programming หาลำดับที่ดีที่สุดในเวลาเชิงเส้น มี 4 ขั้นตอน: Initialization → Recursion → Termination → Backtrace (รายละเอียดดูใน 🖼️ Diagram ด้านล่าง) ความซับซ้อนคือ $O(N \times T^2)$ สำหรับ N คำและ T tag — ถูกกว่าการค้นหาแบบ brute-force มาก
+**Viterbi Decoding** — การลองทุกลำดับ tag ที่เป็นไปได้จะเป็น exponential ดังนั้น Viterbi จึงใช้ dynamic programming หาลำดับที่ดีที่สุดในเวลาเชิงเส้น มี 4 ขั้นตอน: Initialization → Recursion → Termination → Backtrace (รายละเอียดดูใน <span class="material-symbols-outlined">schema</span> Diagram ด้านล่าง) ความซับซ้อนคือ $O(N \times T^2)$ สำหรับ N คำและ T tag — ถูกกว่าการค้นหาแบบ brute-force มาก
 
 **Conditional Random Field (CRF)** — ต่างจาก HMM ตรงที่ CRF เป็นโมเดล **discriminative** ที่โมเดล $P(tags \mid words)$ โดยตรง แทนที่จะโมเดลว่าคำถูกสร้างขึ้นมาอย่างไร CRF ให้คะแนนทั้งลำดับ tag ด้วย weighted feature function แล้ว normalize แบบ global:
 
@@ -95,7 +95,7 @@ $$\text{input: } x_1, x_2, \dots, x_n \;\to\; \text{labels: } y_1, y_2, \dots, y
 > [!tip] เคล็ดลับ
 > แยก HMM กับ CRF ไม่ออก ให้เทียบกับคู่ที่คุ้นเคยกว่า: **HMM เหมือน Naive Bayes** (generative, สมมติ feature เป็นอิสระต่อกัน) ส่วน **CRF เหมือน Logistic Regression** (discriminative, ใช้ feature ที่ซ้อนทับกันได้อย่างอิสระ) — ถ้าโจทย์พูดถึง feature ที่ซับซ้อนหลายตัวพร้อมกัน ให้นึกถึง CRF ก่อน
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -108,4 +108,4 @@ flowchart TD
 **ตัวอย่าง:** ขั้นตอนนี้อ้างอิงจาก Viterbi Decoding บนสไลด์หน้า 7 ความซับซ้อนโดยรวมคือ $O(N \times T^2)$ ซึ่งเร็วกว่าการลองทุกลำดับ tag แบบ brute-force ที่เป็น exponential มาก
 
 ---
-➡️ กลับไปที่ [[Week2-MOC|MOC สัปดาห์ 2]]
+<span class="material-symbols-outlined">arrow_forward</span> กลับไปที่ [[Week2-MOC|MOC สัปดาห์ 2]]

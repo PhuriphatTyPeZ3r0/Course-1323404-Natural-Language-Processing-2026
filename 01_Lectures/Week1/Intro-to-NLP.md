@@ -7,16 +7,16 @@ date: 2026-09-12
 
 # ความรู้เบื้องต้นเกี่ยวกับ NLP (Introduction to NLP)
 
-⬅️ กลับไปที่ [[Week1-MOC|MOC สัปดาห์ 1]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week1-MOC|MOC สัปดาห์ 1]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Natural Language Processing (NLP)** — ศาสตร์ที่ผสาน linguistics, computer science และ AI เข้าด้วยกัน เพื่อให้คอมพิวเตอร์เข้าใจและสร้างภาษามนุษย์ได้
 - **NLU (Natural Language Understanding)** — ส่วนที่ตีความความหมาย เจตนา และโครงสร้างจากข้อความอินพุต
 - **NLG (Natural Language Generation)** — ส่วนที่สร้างข้อความหรือเสียงพูดที่เป็นธรรมชาติออกมาเป็นผลลัพธ์
 - **Upstream / Downstream Tasks** — งานประมวลผลภาษาพื้นฐาน (tokenize, POS, parsing) เทียบกับงานประยุกต์ที่ต่อยอดจากงานพื้นฐาน (classification, translation, QA)
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### NLP คืออะไร
 
@@ -79,7 +79,7 @@ Voice Assistants (Alexa, Google Assistant, Siri), Customer Chatbots, Spam Filter
 > [!tip] เคล็ดลับ
 > จำ NLU กับ NLG สลับกันบ่อย ให้จำว่า **Understanding = ขาเข้า (input → meaning)** ส่วน **Generation = ขาออก (meaning → output)** เหมือนหูฟัง (เข้าใจ) กับปาก (พูดออกมา)
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -98,4 +98,4 @@ flowchart TD
 **ตัวอย่าง:** pipeline นี้อ้างอิงจากแนวคิดของ spaCy (สไลด์หน้า 5) — งานฝั่งซ้าย (upstream) เป็นการเตรียมข้อมูลทางภาษา ส่วนงานฝั่งขวา (downstream) เป็นงานประยุกต์ที่ใช้ผลลัพธ์จาก upstream ไปต่อยอด
 
 ---
-➡️ ต่อไป: [[Tokenization]]
+<span class="material-symbols-outlined">arrow_forward</span> ต่อไป: [[Tokenization]]

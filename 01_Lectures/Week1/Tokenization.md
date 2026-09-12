@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # การตัดคำและการแบ่งหน่วยข้อความ (Tokenization)
 
-⬅️ กลับไปที่ [[Week1-MOC|MOC สัปดาห์ 1]] | ก่อนหน้า: [[Intro-to-NLP]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week1-MOC|MOC สัปดาห์ 1]] | ก่อนหน้า: [[Intro-to-NLP]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Tokenization** — กระบวนการแบ่งข้อความดิบออกเป็นหน่วยย่อย (token) ที่ประมวลผลต่อได้
 - **Byte-Pair Encoding (BPE)** — subword tokenization ที่รวมคู่สัญลักษณ์ที่พบบ่อยที่สุดซ้ำ ๆ จนได้ vocabulary ขนาดที่กำหนด
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **Word Segmentation (ภาษาไทย)** — การหาขอบเขตคำในข้อความที่ไม่มีช่องว่างระหว่างคำ เช่น ภาษาไทย
 - **Word Embedding** — การแทนคำด้วยเวกเตอร์ตัวเลขที่คำความหมายใกล้กันอยู่ใกล้กันในปริภูมิเวกเตอร์
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### ลำดับชั้นของหน่วยข้อความ (Text Unit Hierarchy)
 
@@ -112,7 +112,7 @@ $$P(w_i \mid w_{i-1}) = \frac{C(w_{i-1}, w_i) + 1}{C(w_{i-1}) + V}$$
 > [!tip] เคล็ดลับ
 > เวลาแยก BPE กับ WordPiece ไม่ออก ให้จำที่ "เกณฑ์การเลือก merge": BPE เลือกจาก**ความถี่ดิบ** (นับสถิติล้วน ๆ) ส่วน WordPiece เลือกจาก**ความน่าจะเป็นของภาษา** (ต้องมี language model คอยให้คะแนน) — ถ้าโจทย์พูดถึง "##" prefix ให้นึกถึง WordPiece/BERT ทันที
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -128,4 +128,4 @@ flowchart TD
 **ตัวอย่าง:** ขั้นตอนนี้อ้างอิงจากสไลด์หน้า 5 (BPE Training + Encoder) — ฝึกจาก corpus ตัวอย่าง `"low low lower"` จนได้กฎ merge แล้วนำไปใช้เข้ารหัสคำใหม่ที่ไม่เคยเห็นมาก่อน
 
 ---
-➡️ กลับไปที่ [[Week1-MOC|MOC สัปดาห์ 1]]
+<span class="material-symbols-outlined">arrow_forward</span> กลับไปที่ [[Week1-MOC|MOC สัปดาห์ 1]]

@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # สถาปัตยกรรม Transformer (The Transformer Architecture)
 
-⬅️ กลับไปที่ [[Week7-MOC|MOC สัปดาห์ 7]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week7-MOC|MOC สัปดาห์ 7]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Self-Attention** — กลไกที่ทุกตำแหน่งในลำดับเดียวกัน attend ซึ่งกันและกันได้โดยตรง ไม่ต้องมี recurrence
 - **Scaled Dot-Product Attention** — สูตรแกนกลางของ Transformer: $\text{softmax}(QK^\top/\sqrt{d_k})V$
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **Positional Encoding** — สัญญาณ sin/cos ที่เติมข้อมูลลำดับตำแหน่งให้ token เพราะ self-attention ไม่รู้ลำดับโดยธรรมชาติ
 - **Cross-Attention** — attention ที่ Query มาจาก decoder ส่วน Key/Value มาจากผลลัพธ์ของ encoder
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### ข้อจำกัดของ RNN ที่นำไปสู่ Self-Attention
 
@@ -84,7 +84,7 @@ Transformer เต็มรูปแบบประกอบด้วย stack �
 > [!tip] เคล็ดลับ
 > เวลาสับสนระหว่าง self-attention กับ cross-attention ให้ดูที่แหล่งของ Q/K/V: ถ้า Q, K, V มาจากลำดับเดียวกันทั้งหมด = self-attention, ถ้า Q มาจาก decoder แต่ K, V มาจาก encoder = cross-attention
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -108,4 +108,4 @@ flowchart TD
 **ตัวอย่าง:** สูตร Scaled Dot-Product Attention อยู่ที่สไลด์ Lecture A หน้า 5 (จากทั้งหมด 41 หน้าของ 7-1_Transformer.pptx) ส่วน Encoder/Decoder block และ Cross-Attention อยู่ที่ Lecture B หน้า 23, 27-28 และตระกูล BERT/GPT/T5 สรุปไว้ที่หน้า 35
 
 ---
-➡️ กลับไปที่ [[Week7-MOC|MOC สัปดาห์ 7]]
+<span class="material-symbols-outlined">arrow_forward</span> กลับไปที่ [[Week7-MOC|MOC สัปดาห์ 7]]

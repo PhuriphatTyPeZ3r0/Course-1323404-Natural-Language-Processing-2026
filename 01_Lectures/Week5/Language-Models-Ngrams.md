@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # โมเดลภาษาและ N-grams (Language Models and N-grams)
 
-⬅️ กลับไปที่ [[Week5-MOC|MOC สัปดาห์ 5]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week5-MOC|MOC สัปดาห์ 5]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Language Model (LM)** — โมเดลที่กำหนดความน่าจะเป็นให้กับลำดับคำ หรือทำนายคำถัดไปจากคำก่อนหน้า
 - **N-gram** — ลำดับ token ที่ต่อเนื่องกัน n ตัว ใช้ประมาณความน่าจะเป็นแบบมีเงื่อนไขจากความถี่
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **Perplexity** — ตัวชี้วัดคุณภาพ LM แบบ intrinsic ยิ่งต่ำยิ่งดี
 - **Kneser-Ney Smoothing** — เทคนิค smoothing ที่ได้รับการยอมรับว่าแข็งแกร่งที่สุดในกลุ่ม classic smoothing
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### Language Model คืออะไร
 
@@ -70,7 +70,7 @@ Kneser-Ney smoothing มาจากงานของ Kneser & Ney (1995) แ�
 > [!tip] เคล็ดลับ
 > เช็คสูตร Laplace ง่าย ๆ ด้วยการดูตัวส่วน: ถ้าไม่มี smoothing ตัวส่วนคือ $C(w_{i-1})$ อย่างเดียว แต่ Laplace ต้องบวก $V$ (ขนาด vocabulary) เข้าไปด้วย เพื่อให้ผลรวมความน่าจะเป็นของทุกคำที่เป็นไปได้ยังคงเท่ากับ 1
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -86,4 +86,4 @@ flowchart TD
 **ตัวอย่าง:** ตามสไลด์หน้า 6-8 หากประโยคทดสอบมี bigram ที่ไม่เคยปรากฏในข้อมูลฝึกแม้แต่คู่เดียว การประมาณแบบ MLE ล้วน ๆ จะให้ความน่าจะเป็นทั้งประโยคเท่ากับ 0 ทันที การใส่ smoothing (เช่น Laplace หรือ Kneser-Ney) ก่อนคำนวณ perplexity จึงจำเป็นเสมอในโมเดล n-gram ที่ใช้งานจริง
 
 ---
-➡️ ต่อไป: [[RNN]]
+<span class="material-symbols-outlined">arrow_forward</span> ต่อไป: [[RNN]]

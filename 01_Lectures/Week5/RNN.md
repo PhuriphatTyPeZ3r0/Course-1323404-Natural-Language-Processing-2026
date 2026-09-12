@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # โครงข่ายประสาทเวียนกลับ (Recurrent Neural Networks - RNN)
 
-⬅️ กลับไปที่ [[Week5-MOC|MOC สัปดาห์ 5]] | ก่อนหน้า: [[Language-Models-Ngrams]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week5-MOC|MOC สัปดาห์ 5]] | ก่อนหน้า: [[Language-Models-Ngrams]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **RNN (Recurrent Neural Network)** — โครงข่ายที่ประมวลผลข้อมูลทีละ time step โดยสะสมความจำไว้ใน hidden state
 - **Hidden State ($h_t$)** — ตัวแปรความจำภายในที่สรุปข้อมูลทั้งหมดที่โมเดลเคยเห็นมาจนถึงเวลา $t$
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **LSTM (Long Short-Term Memory)** — สถาปัตยกรรมแบบ gated ที่มี cell state และ 3 gates เพื่อแก้ปัญหา vanishing gradient
 - **GRU (Gated Recurrent Unit)** — เวอร์ชันย่อของ LSTM ที่เหลือแค่ hidden state และ 2 gates
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### ทำไมต้องมี RNN: ข้อจำกัดของ Feed-Forward
 
@@ -93,7 +93,7 @@ $$\text{if } \|\text{gradient}\| > \text{threshold}:\quad \text{gradient} = \tex
 > [!tip] เคล็ดลับ
 > จำแนก LSTM กับ GRU ง่าย ๆ ด้วยจำนวนสิ่งที่ต้องส่งต่อ: LSTM ส่งต่อ 2 อย่าง ($h_t$ และ $C_t$) ผ่าน 3 gates ส่วน GRU ส่งต่อแค่ 1 อย่าง ($h_t$) ผ่าน 2 gates — ยิ่งน้อย ยิ่งเบา ยิ่งเร็ว แต่ก็ยิ่งมีพลังน้อยกว่าเล็กน้อย
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -111,4 +111,4 @@ flowchart TD
 **ตัวอย่าง:** ตามสไลด์หน้า 4-6 การ unroll RNN ยาว ๆ แล้วไล่ gradient ย้อนกลับ (BPTT) คือสาเหตุโดยตรงของทั้ง vanishing และ exploding gradient เพราะเป็นการคูณเมทริกซ์น้ำหนักเดิมซ้ำ ๆ กันตามจำนวน time step ทางแก้ที่สไลด์เสนอคือ gradient clipping สำหรับ exploding gradient และเปลี่ยนไปใช้สถาปัตยกรรม gated (LSTM/GRU ในหน้า 7-9) สำหรับ vanishing gradient
 
 ---
-➡️ กลับไปที่ [[Week5-MOC|MOC สัปดาห์ 5]]
+<span class="material-symbols-outlined">arrow_forward</span> กลับไปที่ [[Week5-MOC|MOC สัปดาห์ 5]]

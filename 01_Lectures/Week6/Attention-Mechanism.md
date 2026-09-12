@@ -7,9 +7,9 @@ date: 2026-09-12
 
 # กลไก Attention (Attention Mechanism)
 
-⬅️ กลับไปที่ [[Week6-MOC|MOC สัปดาห์ 6]] | ก่อนหน้า: [[Encoder-Decoder-Seq2Seq]]
+<span class="material-symbols-outlined">arrow_back</span> กลับไปที่ [[Week6-MOC|MOC สัปดาห์ 6]] | ก่อนหน้า: [[Encoder-Decoder-Seq2Seq]]
 
-## 🔑 Keyword
+## <span class="material-symbols-outlined">key</span> Keyword
 
 - **Bahdanau Attention (Additive)** — คำนวณคะแนนจับคู่ด้วย feed-forward network + tanh
 - **Luong Attention (Multiplicative)** — คำนวณคะแนนจับคู่ด้วย dot product (แบบ dot / general / concat)
@@ -17,7 +17,7 @@ date: 2026-09-12
 - **Context Vector ($c_t$)** — ผลรวมถ่วงน้ำหนัก (weighted sum) ของ encoder hidden states ณ decoder step ปัจจุบัน
 - **Coverage Mechanism** — กลไกติดตามว่าคำต้นทางใดถูก/ยังไม่ถูก attend เพื่อลดปัญหาแปลซ้ำหรือแปลตกหล่น
 
-## 📖 Theory (เข้าใจง่าย)
+## <span class="material-symbols-outlined">menu_book</span> Theory (เข้าใจง่าย)
 
 ### แรงจูงใจ: จาก Bottleneck สู่ Attention
 
@@ -82,7 +82,7 @@ $$c_t = \sum_s a_{t,s} \, h_s$$
 > [!tip] เคล็ดลับ
 > จำง่าย ๆ ว่า "Bahdanau บวก-แล้วทานห์ (additive), Luong คูณจุด (multiplicative)" ส่วน global/local ให้จำว่า local คือ "ซูมเข้าไปดูเฉพาะช่วง" เพื่อประหยัดการคำนวณ
 
-## 🖼️ Diagram
+## <span class="material-symbols-outlined">schema</span> Diagram
 
 ```mermaid
 flowchart TD
@@ -98,4 +98,4 @@ flowchart TD
 **ตัวอย่าง:** สไลด์ 6-2 หน้า 3 (Bahdanau) และหน้า 4-7 (Luong: dot/general/concat, global attention) หน้า 8-11 (local attention และ Gaussian window) หน้า 12 (สูตร context vector) และหน้า 15 (heatmap การแปล "The cat sits on the mat" → "Le chat s'assoit sur le tapis")
 
 ---
-➡️ กลับไปที่ [[Week6-MOC|MOC สัปดาห์ 6]]
+<span class="material-symbols-outlined">arrow_forward</span> กลับไปที่ [[Week6-MOC|MOC สัปดาห์ 6]]
