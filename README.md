@@ -17,7 +17,11 @@
 
 ```text
 03_1323404_Natural-Language-Processing/
-├── 01_Lectures/          # โน้ตสรุปเนื้อหาบรรยายประจำสัปดาห์ (Markdown / Obsidian)
+├── 00_Templates/          # Template โน้ตและคู่มือ format
+├── 01_Lectures/
+│   ├── 01_Docs/           # เอกสารและตำราประกอบการสอน (Ignored in Git)
+│   ├── 02_Teaching_Slides/ # สไลด์ประกอบการสอนประจำสัปดาห์ (Ignored in Git)
+│   └── Week*/              # โน้ตสรุปเนื้อหาบรรยายประจำสัปดาห์ (Markdown / Obsidian)
 ├── 02_Labs_Assignments/  # ใบงาน แบบฝึกหัด และโค้ดแล็บ
 ├── 03_Projects/          # โครงงานและโปรเจกต์ประจำวิชา
 ├── 04_Exams_Review/      # แนวข้อสอบ สรุปทบทวนก่อนสอบกลางภาคและปลายภาค
