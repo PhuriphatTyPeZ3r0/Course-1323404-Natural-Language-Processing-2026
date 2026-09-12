@@ -5,7 +5,10 @@
 *.PPTX
 
 # Obsidian
-.obsidian/
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/graph.json
 .trash/
 
 # OS and System Files
