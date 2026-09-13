@@ -26,3 +26,23 @@ $RECYCLE.BIN/
 .idea/
 *.swp
 *~
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Trained Models & Checkpoints
+custom_*_ner/
+*.spacy
+
+

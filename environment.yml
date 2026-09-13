@@ -1,0 +1,14 @@
+name: nlp
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - ipykernel
+  - pip:
+      - nltk
+      - spacy
+      - pythainlp
+      - scikit-learn
+      - python-dotenv
