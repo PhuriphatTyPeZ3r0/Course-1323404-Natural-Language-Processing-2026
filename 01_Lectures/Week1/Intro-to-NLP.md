@@ -83,16 +83,22 @@ Voice Assistants (Alexa, Google Assistant, Siri), Customer Chatbots, Spam Filter
 
 ```mermaid
 flowchart TD
-    Text["Text (ข้อความดิบ)"] --> Tok["Tokenize + Normalize"]
-    Tok --> POS["POS Tagger"]
-    POS --> Parse["Syntactic Parsing"]
-    Parse --> NER["NER"]
-    NER --> Down{"Downstream Tasks"}
-    Down --> Class["Text Classification"]
-    Down --> Sent["Sentiment Analysis"]
-    Down --> MT["Machine Translation"]
-    Down --> Sum["Text Summarization"]
-    Down --> QA["Question Answering"]
+    Start((●)) --> Text([รับข้อความดิบ<br>Raw Text Input])
+    Text --> Tok([ตัดคำและปรับมาตรฐานข้อความ<br>Tokenize & Normalize])
+    Tok --> POS([ระบุชนิดของคำ<br>POS Tagger])
+    POS --> Parse([วิเคราะห์โครงสร้างไวยากรณ์<br>Syntactic Parsing])
+    Parse --> NER([สกัดเอนทิตีเฉพาะเจาะจง<br>Named Entity Recognition])
+    NER --> Down{เลือกงานปลายทาง<br>Downstream Task?}
+    Down -->|การจัดหมวดหมู่| Class([การจัดหมวดหมู่ข้อความ<br>Text Classification])
+    Down -->|วิเคราะห์อารมณ์| Sent([วิเคราะห์อารมณ์และความรู้สึก<br>Sentiment Analysis])
+    Down -->|การแปลภาษา| MT([การแปลภาษาของเครื่อง<br>Machine Translation])
+    Down -->|การสรุปความ| Sum([การสรุปความอัตโนมัติ<br>Text Summarization])
+    Down -->|การตอบคำถาม| QA([ระบบถาม-ตอบ<br>Question Answering])
+    Class --> EndNode(((●)))
+    Sent --> EndNode
+    MT --> EndNode
+    Sum --> EndNode
+    QA --> EndNode
 ```
 
 **ตัวอย่าง:** pipeline นี้อ้างอิงจากแนวคิดของ spaCy (สไลด์หน้า 5) — งานฝั่งซ้าย (upstream) เป็นการเตรียมข้อมูลทางภาษา ส่วนงานฝั่งขวา (downstream) เป็นงานประยุกต์ที่ใช้ผลลัพธ์จาก upstream ไปต่อยอด

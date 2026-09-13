@@ -124,12 +124,14 @@ VB → "taught"
 
 ```mermaid
 flowchart TD
-    Start(["CFG ตั้งต้น"]) --> CNF["1. แปลงเป็น Chomsky Normal Form (A → BC หรือ A → word)"]
-    CNF --> Table["2. สร้างตาราง n×n แบบสามเหลี่ยม"]
-    Table --> Combine["3. ลองทุกจุดตัด (split point) รวม non-terminal จากสองช่วงย่อยด้านล่าง"]
-    Combine --> Check{"4. S อยู่ใน cell บนสุดที่ครอบทั้งประโยคหรือไม่?"}
-    Check -->|"ใช่"| Valid(["ประโยคถูกต้องตามไวยากรณ์นี้"])
-    Check -->|"ไม่"| Invalid(["ประโยคไม่ผ่านไวยากรณ์นี้"])
+    Start((●)) --> CNF([1. แปลงกฎไวยากรณ์เป็น Chomsky Normal Form<br>Transform CFG to CNF: A ➔ BC | word])
+    CNF --> Table([2. สร้างตารางสามเหลี่ยม Dynamic Programming ขนาด n×n<br>Build Triangular Parse Table])
+    Table --> Combine([3. รวมสัญลักษณ์ Non-terminal จากจุดตัดสองช่วงย่อย<br>Evaluate Split Points])
+    Combine --> Check{4. สัญลักษณ์เริ่มต้น S อยู่ในเซลล์บนสุดหรือไม่?<br>Start Symbol S in Top Cell?}
+    Check -- ใช่ (ยอมรับ) --> Valid([ประโยคถูกต้องตามไวยากรณ์<br>Grammatically Valid])
+    Check -- ไม่ใช่ (ปฏิเสธ) --> Invalid([ประโยคไม่สอดคล้องกับไวยากรณ์<br>Grammatically Invalid])
+    Valid --> EndNode(((●)))
+    Invalid --> EndNode
 ```
 
 **ตัวอย่าง:** อ้างอิงจากสไลด์หน้า 8 (The CYK Algorithm) ความซับซ้อนของอัลกอริทึมคือ $O(n^3 \cdot |G|)$ — เร็วพอสำหรับ parsing ประโยคจริงเมื่อเทียบกับการลองทุกวิธีตีความแบบ exhaustive search

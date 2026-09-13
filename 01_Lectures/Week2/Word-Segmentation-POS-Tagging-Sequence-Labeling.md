@@ -99,10 +99,12 @@ $$\text{input: } x_1, x_2, \dots, x_n \;\to\; \text{labels: } y_1, y_2, \dots, y
 
 ```mermaid
 flowchart TD
-    Init["Initialization: คำนวณความน่าจะเป็นเริ่มต้นของแต่ละ tag (initial × emission)"] --> Recur["Recursion: ทุกตำแหน่ง เก็บ path ความน่าจะเป็นสูงสุดของแต่ละ tag (transition × emission × best score ก่อนหน้า)"]
-    Recur --> Term["Termination: ที่คำสุดท้าย เลือก tag ที่มีความน่าจะเป็นสะสมสูงสุด"]
-    Term --> Back["Backtrace: ย้อนตาม back-pointer เพื่อดึงลำดับ tag ที่ดีที่สุดทั้งประโยค"]
-    Back --> Done(["Best Tag Sequence"])
+    Start((●)) --> Init([1. เริ่มต้นคำนวณความน่าจะเป็นเริ่มต้น<br>Initialization: Initial × Emission])
+    Init --> Recur([2. วนซ้ำสะสมคะแนนสูงสุดและเก็บ Back-pointer<br>Recursion: Transition × Emission × Prev Score])
+    Recur --> Term([3. สิ้นสุดประโยคและเลือก Tag สูงสุดที่คำสุดท้าย<br>Termination: Best Final Tag])
+    Term --> Back([4. ย้อนรอยเส้นทางดึงลำดับ Tag ที่ดีที่สุดทั้งประโยค<br>Backtrace: Best Path Sequence])
+    Back --> Done([ส่งออกลำดับ Tag ที่เหมาะสมที่สุด<br>Optimal Tag Sequence])
+    Done --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** ขั้นตอนนี้อ้างอิงจาก Viterbi Decoding บนสไลด์หน้า 7 ความซับซ้อนโดยรวมคือ $O(N \times T^2)$ ซึ่งเร็วกว่าการลองทุกลำดับ tag แบบ brute-force ที่เป็น exponential มาก

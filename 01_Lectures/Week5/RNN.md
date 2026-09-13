@@ -97,15 +97,18 @@ $$\text{if } \|\text{gradient}\| > \text{threshold}:\quad \text{gradient} = \tex
 
 ```mermaid
 flowchart TD
-    Start(["Input sequence x1, x2, ..., xT"]) --> Unroll["Unroll RNN ตามเวลา: h_t = f(W_hh h_t-1 + W_xh x_t)"]
-    Unroll --> Forward["Forward pass: คำนวณ output และ loss ที่แต่ละ time step"]
-    Forward --> Backward["Backward pass: ไล่ gradient ย้อนกลับผ่านทุก time step (BPTT)"]
-    Backward --> Check{"ค่า gradient มีแนวโน้มอย่างไร?"}
-    Check -->|"ค่า < 1 คูณกันซ้ำ ๆ"| Vanish["Vanishing Gradient → โมเดลลืมบริบทที่อยู่ไกล"]
-    Check -->|"ค่า > 1 คูณกันซ้ำ ๆ"| Explode["Exploding Gradient → ใช้ Gradient Clipping"]
-    Vanish --> Fix["แก้ด้วยสถาปัตยกรรม Gated: LSTM หรือ GRU"]
-    Explode --> Fix
-    Fix --> Done(["โมเดลเทรนได้เสถียรขึ้น จับ dependency ระยะไกลได้ดีขึ้น"])
+    Start((●)) --> InSeq([รับลำดับข้อความขาเข้า: x1, x2, ..., xT<br>Input Sequence])
+    InSeq --> Unroll([คลี่โครงข่าย RNN ตามเวลา<br>Unroll RNN: h_t = f W_hh·h_t-1 + W_xh·x_t])
+    Unroll --> Forward([ประมวลผล Forward Pass คำนวณ Loss ทุก Time Step<br>Forward Pass & Loss Computation])
+    Forward --> Backward([คำนวณ Gradient ย้อนกลับตามเวลา<br>Backpropagation Through Time: BPTT])
+    Backward --> Check{พฤติกรรมของค่า Gradient?<br>Gradient Magnitude Behavior?}
+    Check -->|คูณค่าต่ำกว่า 1 ซ้ำ ๆ| Vanish([เกิดปัญหา Vanishing Gradient<br>Vanishing Gradient: Loss of Context])
+    Check -->|คูณค่าสูงกว่า 1 ซ้ำ ๆ| Explode([เกิดปัญหา Exploding Gradient<br>Exploding Gradient: Numeric Instability])
+    Vanish --> Fix([เปลี่ยนเป็นสถาปัตยกรรม Gated: LSTM / GRU<br>Adopt LSTM or GRU])
+    Explode --> Clip([แก้ด้วย Gradient Clipping<br>Apply Gradient Clipping])
+    Clip --> Fix
+    Fix --> Done([แบบจำลองเสถียรและจดจำบริบทระยะไกลได้<br>Stable Long-Term Dependency Modeling])
+    Done --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** ตามสไลด์หน้า 4-6 การ unroll RNN ยาว ๆ แล้วไล่ gradient ย้อนกลับ (BPTT) คือสาเหตุโดยตรงของทั้ง vanishing และ exploding gradient เพราะเป็นการคูณเมทริกซ์น้ำหนักเดิมซ้ำ ๆ กันตามจำนวน time step ทางแก้ที่สไลด์เสนอคือ gradient clipping สำหรับ exploding gradient และเปลี่ยนไปใช้สถาปัตยกรรม gated (LSTM/GRU ในหน้า 7-9) สำหรับ vanishing gradient

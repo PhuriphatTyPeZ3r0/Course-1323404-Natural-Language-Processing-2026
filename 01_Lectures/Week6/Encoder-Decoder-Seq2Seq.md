@@ -68,15 +68,26 @@ date: 2026-09-12
 
 ```mermaid
 flowchart TD
-    X1["x1"] --> ENC1["Encoder step 1"]
-    X2["x2"] --> ENC2["Encoder step 2"]
-    XN["...xN"] --> ENCN["Encoder step N"]
-    ENC1 --> ENC2 --> ENCN
-    ENCN --> C(["Context Vector C\n(bottleneck)"])
-    C --> DEC1["Decoder step 1\ninput: BOS"]
-    DEC1 -->|"y1"| DEC2["Decoder step 2\ninput: y1"]
-    DEC2 -->|"y2"| DEC3["Decoder step ...\ninput: y<t"]
-    DEC3 -->|"EOS"| DONE(["จบการสร้างประโยค"])
+    Start((●)) --> InputSeq([รับลำดับประโยคต้นทาง: x1, x2, ..., xN<br>Input Sequence])
+    
+    subgraph Encoder ["ตัวเข้ารหัส (Encoder Network)"]
+        InputSeq --> ENC1([Encoder step 1: h1])
+        ENC1 --> ENC2([Encoder step 2: h2])
+        ENC2 --> ENCN([Encoder step N: hN])
+    end
+
+    ENCN --> Context([เวกเตอร์บริบทสรุปความหมาย<br>Context Vector C: Bottleneck])
+
+    subgraph Decoder ["ตัวถอดรหัส (Decoder Network)"]
+        Context --> DEC1([Decoder step 1: รับ BOS คำนวณ y1])
+        DEC1 --> DEC2([Decoder step 2: รับ y1 คำนวณ y2])
+        DEC2 --> DECN([Decoder step N: รับ y_t-1 คำนวณ y_t])
+    end
+
+    DECN --> CheckEnd{พบโทเค็นสิ้นสุด EOS หรือไม่?<br>Encountered EOS Token?}
+    CheckEnd -- ใช่ --> Finish([ได้ประโยคปลายทางที่สมบูรณ์<br>Target Output Sequence])
+    CheckEnd -- ไม่ใช่ --> DECN
+    Finish --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** ตามสไลด์ 6-1 หน้า 8 แสดงตัวอย่างแปล "The cat" → "Le chat" ด้วย encoder-decoder แบบ RNN และหน้า 9 แสดงกราฟ BLEU ที่ตกลงเมื่อความยาวประโยคเพิ่มขึ้น ส่วนกลยุทธ์การถอดรหัสอยู่ที่หน้า 16 (beam width $k=2$)

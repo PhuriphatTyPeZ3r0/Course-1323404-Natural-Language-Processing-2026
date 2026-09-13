@@ -116,13 +116,15 @@ $$P(w_i \mid w_{i-1}) = \frac{C(w_{i-1}, w_i) + 1}{C(w_{i-1}) + V}$$
 
 ```mermaid
 flowchart TD
-    Start(["Corpus เริ่มต้น: ตัวอักษร + ตัวคั่นท้ายคำ"]) --> Count["นับคู่สัญลักษณ์ที่อยู่ติดกันทั้งหมด"]
-    Count --> Merge["รวมคู่ที่พบบ่อยที่สุด เช่น 'e s' → 'es'"]
-    Merge --> Repeat{"ครบ N รอบ (vocab size) แล้วหรือยัง?"}
-    Repeat -->|"ยัง"| Count
-    Repeat -->|"ครบแล้ว"| Vocab(["Vocabulary + Merge Rules ที่เรียนรู้แล้ว"])
-    Vocab --> Encode["เข้ารหัสคำใหม่ด้วยกฎ merge ตามลำดับที่เรียนมา"]
-    Encode --> Result(["ผลลัพธ์: subword tokens เช่น 'unbelievable' → un + believ + able"])
+    Start((●)) --> InitCorpus([คลังข้อความเริ่มต้น: ตัวอักษรและตัวคั่น<br>Character-level Corpus with End Token])
+    InitCorpus --> Count([นับความถี่คู่สัญลักษณ์ที่อยู่ติดกัน<br>Count Adjacent Symbol Pairs])
+    Count --> Merge([รวมคู่ที่พบบ่อยที่สุด<br>Merge Most Frequent Pair: e.g. e s ➔ es])
+    Merge --> Repeat{ครบขนาดคำศัพท์ที่กำหนดแล้วหรือไม่?<br>Reached Target Vocab Size?}
+    Repeat -- ยังไม่ครบ --> Count
+    Repeat -- ครบแล้ว --> Vocab([ส่งออกกฎ Merge Rules และ Vocabulary<br>Learned Merge Rules & Vocabulary])
+    Vocab --> Encode([เข้ารหัสข้อความใหม่ตามลำดับกฎ<br>Encode New Text with Learned Rules])
+    Encode --> Result([ได้โทเค็นระดับคำย่อย<br>Subword Tokens Output])
+    Result --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** ขั้นตอนนี้อ้างอิงจากสไลด์หน้า 5 (BPE Training + Encoder) — ฝึกจาก corpus ตัวอย่าง `"low low lower"` จนได้กฎ merge แล้วนำไปใช้เข้ารหัสคำใหม่ที่ไม่เคยเห็นมาก่อน

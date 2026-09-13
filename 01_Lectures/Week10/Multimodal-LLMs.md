@@ -54,11 +54,20 @@ LLM แบบดั้งเดิมอ่านและเขียนข้�
 
 ```mermaid
 flowchart LR
-    A[Raw Input\nimage / audio / video] --> B[Modality Encoder\nViT, audio encoder, ...]
-    B --> C[Projection Layer\nแปลงให้ตรง token space ของข้อความ]
-    C --> D[Core LLM\nAutoregressive Transformer Backbone]
-    T[Text Input] --> D
-    D --> E[Output\nข้อความ / ภาพ / ทั้งสองอย่าง]
+    Start((●)) --> Inputs
+    subgraph MultiModalInput ["ข้อมูลนำเข้าหลายรูปแบบ (Multimodal Input)"]
+        RawMedia([ข้อมูลดิบภาพ / เสียง / วิดีโอ<br>Raw Image, Audio, Video])
+        RawText([ข้อความคำสั่ง<br>Text Prompt])
+    end
+
+    RawMedia --> ModEncoder([ตัวเข้ารหัสรูปแบบข้อมูลเฉพาะ<br>Modality Encoder: ViT / Whisper])
+    ModEncoder --> Projection([เลเยอร์ปรับปริภูมิโทเค็น<br>Projection Layer to LLM Token Space])
+    
+    Projection --> CoreLLM([แกนประมวลผลโมเดลภาษา<br>Autoregressive Transformer Backbone])
+    RawText --> CoreLLM
+    
+    CoreLLM --> OutGeneration([สร้างคำตอบหลายรูปแบบ<br>Multimodal Output])
+    OutGeneration --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** pipeline นี้ตรงกับสไลด์ 10-1.2 "Putting It Together: The Full Pipeline" (หน้า 8) ซึ่งสรุปการไหลจาก raw input จนถึง output ของ MLLM

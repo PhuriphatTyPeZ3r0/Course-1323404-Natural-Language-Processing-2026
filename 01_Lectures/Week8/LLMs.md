@@ -85,11 +85,13 @@ $$W = W_0 + BA \quad (\text{rank } r \ll d)$$
 
 ```mermaid
 flowchart TD
-    A[Pretraining\nข้อมูลดิบขนาดใหญ่ ~15T tokens] --> B[Supervised Fine-Tuning: SFT]
-    B --> C[RLHF / DPO\nalign ตาม human preference]
-    C --> D[Rejection Sampling\nเลือกคำตอบที่ดีที่สุดจากหลาย candidate]
-    D --> E[Quantization\nINT8/INT4, GGUF]
-    E --> F[Deployment\nOllama / HF Transformers / llama.cpp]
+    Start((●)) --> Pretrain([1. การฝึกฝนขั้นต้น<br>Pre-training on Massive Corpus ~15T Tokens])
+    Pretrain --> SFT([2. การปรับจูนคำสั่งแบบมีผู้ดูแล<br>Supervised Fine-Tuning: SFT])
+    SFT --> Align([3. การจัดแนวทางตามความชอบมนุษย์<br>Human Preference Alignment: RLHF / DPO])
+    Align --> RejectSample([4. การสุ่มคัดกรองคำตอบที่ดีที่สุด<br>Rejection Sampling])
+    RejectSample --> Quantize([5. การลดทอนขนาดโมเดล<br>Quantization: INT4 / INT8 GGUF])
+    Quantize --> Deploy([6. การนำโมเดลไปติดตั้งใช้งานจริง<br>Deployment: Ollama / vLLM / llama.cpp])
+    Deploy --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** pipeline นี้สรุปจากสไลด์ Lecture A slide 8 (Llama 3 Post-Training) ต่อเนื่องถึง Lecture B slide 10-17 (Fine-Tuning และ Deployment)

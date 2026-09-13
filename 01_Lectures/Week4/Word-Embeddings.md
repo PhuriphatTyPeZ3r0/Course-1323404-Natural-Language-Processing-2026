@@ -74,13 +74,15 @@ word2vec (Mikolov et al., 2013, *"Efficient Estimation of Word Representations i
 
 ```mermaid
 flowchart TD
-    Start(["คลังข้อความ (Corpus)"]) --> Pairs["สร้างคู่ center word / context word ด้วยหน้าต่างบริบท (context window)"]
-    Pairs --> Choose{"เลือกวิธีฝึก"}
-    Choose -->|"Skip-gram"| SG["ทำนาย context words จาก center word"]
-    Choose -->|"CBOW"| CB["ทำนาย center word จาก context words"]
-    SG --> Train["ฝึก shallow neural network ด้วย backpropagation"]
+    Start((●)) --> Corpus([นำเข้าคลังข้อความ<br>Ingest Corpus Text])
+    Corpus --> Pairs([สร้างคู่คำเป้าหมายและบริบทตามหน้าต่าง Context Window<br>Extract Center & Context Word Pairs])
+    Pairs --> Choose{เลือกสถาปัตยกรรมฝึกฝน<br>Select Training Architecture?}
+    Choose -->|Skip-gram| SG([ทำนายคำบริบทจากคำเป้าหมายเดี่ยว<br>Predict Context from Center Word])
+    Choose -->|CBOW| CB([ทำนายคำเป้าหมายจากผลรวมคำบริบท<br>Predict Center from Context Words])
+    SG --> Train([ฝึกฝนโครงข่ายตื้นด้วย Backpropagation<br>Train Shallow Neural Network])
     CB --> Train
-    Train --> Done(["น้ำหนักชั้นซ่อน (hidden layer weights) กลายเป็น word embeddings"])
+    Train --> Done([สกัดเมทริกซ์ค่าน้ำหนักเป็น Word Embeddings<br>Extract Learned Word Vectors])
+    Done --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** สไลด์หน้า 5-6 แสดงว่าเมื่อฝึกเสร็จแล้ว เวกเตอร์ผลลัพธ์จะจับความสัมพันธ์เชิงความหมายได้ เช่น `v(king) − v(man) + v(woman) ≈ v(queen)` และสามารถนำเวกเตอร์ที่ฝึกจากคลังหนึ่งไปใช้ต่อ (pretrained) หรือปรับจูน (fine-tune) กับงานปลายทางอื่นได้โดยไม่ต้องฝึกใหม่ทั้งหมด

@@ -75,14 +75,22 @@ DPR เทรนด้วย contrastive loss ที่ใช้ hard negative �
 
 ```mermaid
 flowchart LR
-    Q[Query จากผู้ใช้] --> QE[Query Encoder\nDPR / Sentence Transformer]
-    QE --> ANN[ANN Search\nFAISS / ChromaDB]
-    KB[(Knowledge Base\nPassage Vectors)] --> ANN
-    ANN --> R[Retrieved Passages\nTop-k]
-    R --> AUG[Augment Prompt\nContext Injection]
-    Q --> AUG
-    AUG --> GEN[Generator\nRAG-Sequence / RAG-Token]
-    GEN --> OUT[คำตอบ + การอ้างอิง]
+    Start((●)) --> UserQuery([รับคำถามจากผู้ใช้<br>User Query])
+    UserQuery --> QEncoder([แปลงคำถามเป็นเวกเตอร์<br>Query Encoder: DPR / Embeddings])
+    
+    subgraph Storage ["คลังเวกเตอร์เอกสาร (Vector Store)"]
+        KB[(คลังความรู้เอกสาร<br>Knowledge Base Chunks)]
+    end
+
+    QEncoder --> Search([ค้นหาเวกเตอร์ใกล้เคียงความเร็วสูง<br>ANN Search: FAISS / ChromaDB])
+    KB --> Search
+    Search --> Passages([สกัดเนื้อหาอ้างอิง Top-k ที่เกี่ยวข้อง<br>Retrieved Passages])
+    
+    UserQuery --> Augment([สร้าง Prompt เสริมบริบท<br>Augment Context Injection])
+    Passages --> Augment
+    Augment --> Generator([ป้อนเข้าโมเดลกำเนิดภาษา<br>LLM Generator])
+    Generator --> Answer([แสดงคำตอบพร้อมรายการอ้างอิง<br>Final Answer & Citations])
+    Answer --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** pipeline นี้สรุปจาก Lecture A slide 3-8 (RAG framework + DPR) และ Lecture B slide 2-8 (ChromaDB + context injection)

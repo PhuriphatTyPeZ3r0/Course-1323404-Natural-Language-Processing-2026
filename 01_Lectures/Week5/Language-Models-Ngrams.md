@@ -74,13 +74,15 @@ Kneser-Ney smoothing มาจากงานของ Kneser & Ney (1995) แ�
 
 ```mermaid
 flowchart TD
-    Start(["คลังข้อความสำหรับฝึก (training corpus)"]) --> Count["นับความถี่ n-gram: C(w_i-1, w_i)"]
-    Count --> Check{"C(w_i-1, w_i) = 0 หรือไม่?"}
-    Check -->|"ไม่ (เคยพบใน training)"| MLE["ประมาณด้วย Maximum Likelihood: C(w_i-1, w_i) / C(w_i-1)"]
-    Check -->|"ใช่ (ไม่เคยพบเลย)"| Smooth["ใช้ Smoothing: Laplace add-1 หรือ Kneser-Ney"]
-    MLE --> Prob(["ได้ P(w_i | w_i-1)"])
+    Start((●)) --> Corpus([นำเข้าคลังข้อความฝึกฝน<br>Ingest Training Corpus])
+    Corpus --> Count([นับความถี่การปรากฏ n-gram: C w_i-1, w_i<br>Count n-gram Frequencies])
+    Count --> Check{พบความถี่ในข้อมูลฝึกหรือไม่?<br>C w_i-1, w_i > 0 ?}
+    Check -- พบ (เคยมี) --> MLE([ประมาณค่าความน่าจะเป็นแบบ MLE<br>C w_i-1, w_i / C w_i-1])
+    Check -- ไม่พบ (ค่าเป็น 0) --> Smooth([ใช้เทคนิคปรับเรียบ Laplace หรือ Kneser-Ney<br>Apply Smoothing Techniques])
+    MLE --> Prob([ได้ค่าความน่าจะเป็นแบบมีเงื่อนไข P w_i | w_i-1<br>Conditional Probability Estimated])
     Smooth --> Prob
-    Prob --> PP["คำนวณ Perplexity บน held-out test set"]
+    Prob --> PP([คำนวณค่าความสับสน Perplexity บนชุดทดสอบ<br>Evaluate Test Perplexity])
+    PP --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** ตามสไลด์หน้า 6-8 หากประโยคทดสอบมี bigram ที่ไม่เคยปรากฏในข้อมูลฝึกแม้แต่คู่เดียว การประมาณแบบ MLE ล้วน ๆ จะให้ความน่าจะเป็นทั้งประโยคเท่ากับ 0 ทันที การใส่ smoothing (เช่น Laplace หรือ Kneser-Ney) ก่อนคำนวณ perplexity จึงจำเป็นเสมอในโมเดล n-gram ที่ใช้งานจริง

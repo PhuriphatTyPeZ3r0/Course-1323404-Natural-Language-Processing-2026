@@ -88,21 +88,30 @@ Transformer เต็มรูปแบบประกอบด้วย stack �
 
 ```mermaid
 flowchart TD
-    In["Input tokens + Positional Encoding"] --> EncSA["Encoder: Multi-Head Self-Attention"]
-    EncSA --> EncAdd1["Add & LayerNorm"]
-    EncAdd1 --> EncFFN["Feed-Forward Network"]
-    EncFFN --> EncAdd2["Add & LayerNorm"]
-    EncAdd2 -->|"ทำซ้ำ N ชั้น"| EncOut(["Encoder Output (K, V)"])
+    Start((●)) --> InToken([รับ Input Tokens และ Positional Encoding<br>Input Embeddings + PE])
 
-    Tgt["Target tokens + Positional Encoding"] --> DecMSA["Decoder: Masked Self-Attention"]
-    DecMSA --> DecAdd1["Add & LayerNorm"]
-    DecAdd1 --> CrossAttn["Cross-Attention\n(Q จาก Decoder, K/V จาก Encoder)"]
+    subgraph Encoder ["บล็อกตัวเข้ารหัส (Encoder Block: N Layers)"]
+        InToken --> EncSA([Multi-Head Self-Attention])
+        EncSA --> EncAdd1([Add & Layer Normalization])
+        EncAdd1 --> EncFFN([Position-wise Feed-Forward Network])
+        EncFFN --> EncAdd2([Add & Layer Normalization])
+    end
+
+    EncAdd2 --> EncOut([ส่งออก Memory Keys และ Values<br>Encoder Output K, V])
+
+    subgraph Decoder ["บล็อกตัวถอดรหัส (Decoder Block: N Layers)"]
+        TgtToken([รับ Target Tokens และ Positional Encoding<br>Target Embeddings + PE]) --> DecMSA([Masked Multi-Head Self-Attention])
+        DecMSA --> DecAdd1([Add & Layer Normalization])
+        DecAdd1 --> CrossAttn([Multi-Head Cross-Attention<br>Q จาก Decoder, K/V จาก Encoder])
+        CrossAttn --> DecAdd2([Add & Layer Normalization])
+        DecAdd2 --> DecFFN([Position-wise Feed-Forward Network])
+        DecFFN --> DecAdd3([Add & Layer Normalization])
+    end
+
     EncOut --> CrossAttn
-    CrossAttn --> DecAdd2["Add & LayerNorm"]
-    DecAdd2 --> DecFFN["Feed-Forward Network"]
-    DecFFN --> DecAdd3["Add & LayerNorm"]
-    DecAdd3 -->|"ทำซ้ำ N ชั้น"| Linear["Linear + Softmax"]
-    Linear --> Out(["ความน่าจะเป็นของ token ถัดไป"])
+    DecAdd3 --> Linear([Linear Projection + Softmax])
+    Linear --> Out([คำนวณความน่าจะเป็นของโทเค็นถัดไป<br>Next Token Probabilities])
+    Out --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** สูตร Scaled Dot-Product Attention อยู่ที่สไลด์ Lecture A หน้า 5 (จากทั้งหมด 41 หน้าของ 7-1_Transformer.pptx) ส่วน Encoder/Decoder block และ Cross-Attention อยู่ที่ Lecture B หน้า 23, 27-28 และตระกูล BERT/GPT/T5 สรุปไว้ที่หน้า 35

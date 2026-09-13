@@ -86,13 +86,18 @@ $$c_t = \sum_s a_{t,s} \, h_s$$
 
 ```mermaid
 flowchart TD
-    Q["Query: decoder state s_t"] --> Score["คำนวณคะแนน score(s_t, h_s)\n(Bahdanau / Luong)"]
-    K["Key: encoder states h_1..h_N"] --> Score
-    Score --> Softmax["Softmax normalize\n-> a_t,s"]
-    Softmax --> Weighted["ถ่วงน้ำหนัก a_t,s x h_s"]
-    V["Value: encoder states h_1..h_N"] --> Weighted
-    Weighted --> Context(["Context Vector c_t\n= sum a_t,s * h_s"])
-    Context --> Decoder["ป้อนเข้า decoder step t\nเพื่อสร้าง y_t"]
+    Start((●)) --> Query([Query: สถานะตัวถอดรหัส s_t<br>Decoder State Query])
+    Start --> Keys([Key: สถานะตัวเข้ารหัส h_1..h_N<br>Encoder State Keys])
+    Start --> Values([Value: สถานะตัวเข้ารหัส h_1..h_N<br>Encoder State Values])
+
+    Query --> Score([คำนวณคะแนนความสอดคล้อง Alignment Score<br>Bahdanau Additive / Luong Multiplicative])
+    Keys --> Score
+    Score --> Softmax([ปรับสเกลเป็นค่าความน่าจะเป็นด้วย Softmax<br>Attention Weights a_t,s])
+    Softmax --> Weighted([คูณถ่วงน้ำหนักกับเวกเตอร์ Value<br>Weighted Sum: a_t,s × h_s])
+    Values --> Weighted
+    Weighted --> Context([ได้เวกเตอร์บริบทเฉพาะจุด Context Vector c_t<br>Dynamic Context Vector])
+    Context --> Decoder([ป้อนร่วมกับ s_t เพื่อสร้างโทเค็น y_t<br>Decoder Prediction Step])
+    Decoder --> EndNode(((●)))
 ```
 
 **ตัวอย่าง:** สไลด์ 6-2 หน้า 3 (Bahdanau) และหน้า 4-7 (Luong: dot/general/concat, global attention) หน้า 8-11 (local attention และ Gaussian window) หน้า 12 (สูตร context vector) และหน้า 15 (heatmap การแปล "The cat sits on the mat" → "Le chat s'assoit sur le tapis")
