@@ -226,24 +226,24 @@ $$F_1\text{-score} = \frac{2 \times \text{Precision} \times \text{Recall}}{\text
 
 ```mermaid
 flowchart TD
-    Start((●)) --> InputText([รับข้อความดิบ: นายสมชายเรียนที่ซอฟแวร์ปาร์คในกรุงเทพ<br>Raw Text Input])
+    Start((●)) --> InputText(["รับข้อความดิบ: นายสมชายเรียนที่ซอฟแวร์ปาร์คในกรุงเทพ<br>Raw Text Input"])
     
     subgraph Step1 ["ขั้นตอนที่ 1: Word Segmentation"]
-        InputText --> SegDict([ตัดคำด้วย Dictionary & Graph Matcher: PyThaiNLP newmm<br>Token Boundary Inference])
-        SegDict --> Tokens([ได้ลำดับคำ: นาย | สมชาย | เรียน | ที่ | ซอฟแวร์ | ปาร์ค | ใน | กรุงเทพ<br>Token Sequence])
+        InputText --> SegDict(["ตัดคำด้วย Dictionary & Graph Matcher: PyThaiNLP newmm<br>Token Boundary Inference"])
+        SegDict --> Tokens(["ได้ลำดับคำ: นาย | สมชาย | เรียน | ที่ | ซอฟแวร์ | ปาร์ค | ใน | กรุงเทพ<br>Token Sequence"])
     end
 
     subgraph Step2 ["ขั้นตอนที่ 2: Sequence Feature Extraction"]
-        Tokens --> Feat([สกัด Features: คำแวดล้อม, Word Shape, Prefix/Suffix<br>Linear-Chain CRF Feature Extraction])
+        Tokens --> Feat(["สกัด Features: คำแวดล้อม, Word Shape, Prefix/Suffix<br>Linear-Chain CRF Feature Extraction"])
     end
 
     subgraph Step3 ["ขั้นตอนที่ 3: Sequence Labeling Inference"]
-        Feat --> Viterbi([ถอดรหัสลำดับป้ายกำกับที่ดีที่สุดด้วย Viterbi Decoding<br>Optimal Path Decoding])
-        Viterbi --> BioTags([กำหนดป้าย BIO: O, B-PER, O, O, B-ORG, I-ORG, O, B-LOC<br>BIO Tag Output])
+        Feat --> Viterbi(["ถอดรหัสลำดับป้ายกำกับที่ดีที่สุดด้วย Viterbi Decoding<br>Optimal Path Decoding"])
+        Viterbi --> BioTags(["กำหนดป้าย BIO: O, B-PER, O, O, B-ORG, I-ORG, O, B-LOC<br>BIO Tag Output"])
     end
 
     subgraph Step4 ["ขั้นตอนที่ 4: Entity Chunk Extraction"]
-        BioTags --> SpanGroup([รวมขอบเขตสแปน: สมชาย=PER, ซอฟแวร์ปาร์ค=ORG, กรุงเทพ=LOC<br>Span Formation & Output])
+        BioTags --> SpanGroup(["รวมขอบเขตสแปน: สมชาย=PER, ซอฟแวร์ปาร์ค=ORG, กรุงเทพ=LOC<br>Span Formation & Output"])
     end
 
     SpanGroup --> EndNode(((●)))

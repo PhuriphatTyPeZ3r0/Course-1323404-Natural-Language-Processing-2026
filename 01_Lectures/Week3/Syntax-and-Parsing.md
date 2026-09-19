@@ -124,12 +124,12 @@ VB → "taught"
 
 ```mermaid
 flowchart TD
-    Start((●)) --> CNF([1. แปลงกฎไวยากรณ์เป็น Chomsky Normal Form<br>Transform CFG to CNF: A ➔ BC | word])
-    CNF --> Table([2. สร้างตารางสามเหลี่ยม Dynamic Programming ขนาด n×n<br>Build Triangular Parse Table])
-    Table --> Combine([3. รวมสัญลักษณ์ Non-terminal จากจุดตัดสองช่วงย่อย<br>Evaluate Split Points])
-    Combine --> Check{4. สัญลักษณ์เริ่มต้น S อยู่ในเซลล์บนสุดหรือไม่?<br>Start Symbol S in Top Cell?}
-    Check -- ใช่ (ยอมรับ) --> Valid([ประโยคถูกต้องตามไวยากรณ์<br>Grammatically Valid])
-    Check -- ไม่ใช่ (ปฏิเสธ) --> Invalid([ประโยคไม่สอดคล้องกับไวยากรณ์<br>Grammatically Invalid])
+    Start((●)) --> CNF(["1. แปลงกฎไวยากรณ์เป็น Chomsky Normal Form<br>Transform CFG to CNF: A ➔ BC | word"])
+    CNF --> Table(["2. สร้างตารางสามเหลี่ยม Dynamic Programming ขนาด n×n<br>Build Triangular Parse Table"])
+    Table --> Combine(["3. รวมสัญลักษณ์ Non-terminal จากจุดตัดสองช่วงย่อย<br>Evaluate Split Points"])
+    Combine --> Check{"4. สัญลักษณ์เริ่มต้น S อยู่ในเซลล์บนสุดหรือไม่?<br>Start Symbol S in Top Cell?"}
+    Check -- ใช่ (ยอมรับ) --> Valid(["ประโยคถูกต้องตามไวยากรณ์<br>Grammatically Valid"])
+    Check -- ไม่ใช่ (ปฏิเสธ) --> Invalid(["ประโยคไม่สอดคล้องกับไวยากรณ์<br>Grammatically Invalid"])
     Valid --> EndNode(((●)))
     Invalid --> EndNode
 ```
