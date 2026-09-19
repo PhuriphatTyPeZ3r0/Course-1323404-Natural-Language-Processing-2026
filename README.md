@@ -1,4 +1,4 @@
-﻿# 1323404 Natural Language Processing (การประมวลผลภาษาธรรมชาติ)
+# 1323404 Natural Language Processing (การประมวลผลภาษาธรรมชาติ)
 
 <div align="center">
 
@@ -60,7 +60,8 @@ Course-1323404-Natural-Language-Processing-2026/
 │   └── Week10/                # Multimodal Large Language Models
 ├── 02_Labs_Assignments/       # ใบงาน แบบฝึกหัด และ Jupyter Notebooks
 │   ├── .env.example           # แม่แบบ Environment Variables สำหรับตั้งค่า API Keys
-│   └── Week1/                 # Notebook พื้นฐานการประมวลผลข้อความและ spaCy
+│   ├── Week1/                 # Notebook พื้นฐานการประมวลผลข้อความและ spaCy
+│   └── Week2/                 # Notebook การตัดคำและ Byte Pair Encoding (BPE)
 ├── 03_Projects/                # โครงงานและโปรเจกต์ประจำวิชา
 │   └── README.md
 ├── 04_Exams_Review/            # สรุปทบทวนเนื้อหาและแนวข้อสอบกลางภาค/ปลายภาค
@@ -77,8 +78,9 @@ Course-1323404-Natural-Language-Processing-2026/
 
 | สัปดาห์ | หัวข้อการเรียนรู้ (Topics) | โน้ตสรุป (MOC & Notes) | สไลด์บรรยาย |
 | :---: | :--- | :--- | :---: |
-| **Week 01** | **Intro to NLP & Tokenization**<br>• ความท้าทายของภาษาธรรมชาติ (Ambiguity, Context, Morphology)<br>• Pipeline เบื้องต้น: Sentence Splitting, Tokenization, Regex | [Week 1 MOC](01_Lectures/Week1/Week1-MOC.md)<br>• [Intro to NLP](01_Lectures/Week1/Intro-to-NLP.md)<br>• [Tokenization](01_Lectures/Week1/Tokenization.md) | [สไลด์](01_Lectures/02_Teaching_Slides/) |
-| **Week 02** | **Word Segmentation & Normalization**<br>• การตัดคำภาษาไทยที่ไม่มีช่องว่างระหว่างคำ (MaxMatch, DeepCut)<br>• Text Normalization, Stemming, Lemmatization, Stopwords | [Week 2 MOC](01_Lectures/Week2/Week2-MOC.md)<br>• [Segmentation & Norm](01_Lectures/Week2/Word-Segmentation-and-Normalization.md) | [สไลด์](01_Lectures/02_Teaching_Slides/) |
+| **ภาพรวม** | **Course Overview & Orientation**<br>• ประมวลรายวิชา, CLOs, เกณฑ์คะแนน (Exam 40%, Mini-Project 40%)<br>• ระเบียบการเช็คชื่อ, กำหนดการ Drop / Exam, และช่องทาง MS Teams | [Course Overview](01_Lectures/01_Docs/Course-Overview.md) | [สไลด์ (Intro)](01_Lectures/02_Teaching_Slides/0_Intro_to_the_Class.pdf) |
+| **Week 01** | **Intro to NLP & Tokenization**<br>• วิวัฒนาการ 6 ยุคสมัย, NLU/KAI/NLG, 5 ความท้าทายภาษาไทย<br>• Pipeline: Normalization, BPE Step-by-Step, Byte-Level BPE, Thai Segmentation | [Week 1 MOC](01_Lectures/Week1/Week1-MOC.md)<br>• [Intro to NLP](01_Lectures/Week1/Intro-to-NLP.md)<br>• [Tokenization](01_Lectures/Week1/Tokenization.md) | [สไลด์](01_Lectures/02_Teaching_Slides/) |
+| **Week 02** | **Word Segmentation, POS Tagging & Sequence Labeling**<br>• การตัดคำภาษาไทยที่ไม่มีช่องว่าง, ความกำกวมของขอบเขตคำ<br>• POS Tagging: Rule-based (Brill TBL), HMM (Viterbi), Linear-chain CRF<br>• Sequence Labeling & NER (IO/BIO/BIOES) และตัวอย่างประโยคภาษาไทย | [Week 2 MOC](01_Lectures/Week2/Week2-MOC.md)<br>• [Segmentation, POS & NER](01_Lectures/Week2/Word-Segmentation-POS-Tagging-Sequence-Labeling.md) | [สไลด์](01_Lectures/02_Teaching_Slides/) |
 | **Week 03** | **Syntax & Dependency Parsing**<br>• Part-of-Speech (POS) Tagging และ Grammar Formalisms (CFG)<br>• Dependency Parsing, Head-Dependent Relations, Universal Dependencies | [Week 3 MOC](01_Lectures/Week3/Week3-MOC.md)<br>• [Syntax and Parsing](01_Lectures/Week3/Syntax-and-Parsing.md) | [สไลด์](01_Lectures/02_Teaching_Slides/) |
 | **Week 04** | **Word Representations & Embeddings**<br>• One-Hot Encoding, TF-IDF และมิติแฝงทางภาษาศาสตร์<br>• Word2Vec (Skip-gram & CBOW), GloVe, FastText Subword Information | [Week 4 MOC](01_Lectures/Week4/Week4-MOC.md)<br>• [Word Embeddings](01_Lectures/Week4/Word-Embeddings.md) | [สไลด์](01_Lectures/02_Teaching_Slides/) |
 | **Week 05** | **Language Modeling & Sequence Models**<br>• N-gram Language Modeling และ Perplexity Metric<br>• Recurrent Neural Networks (RNN), Exploding/Vanishing Gradients, LSTM, GRU | [Week 5 MOC](01_Lectures/Week5/Week5-MOC.md)<br>• [Language Models](01_Lectures/Week5/Language-Models-Ngram.md)<br>• [RNN Architectures](01_Lectures/Week5/RNN.md) | [สไลด์](01_Lectures/02_Teaching_Slides/) |
@@ -116,6 +118,7 @@ Copy-Item .env.example .env
 | สัปดาห์ | หัวข้อแบบฝึกหัด (Lab / Assignment) | รายละเอียดและเนื้อหาการทดลอง | โฟลเดอร์ซอร์สโค้ด |
 | :---: | :--- | :--- | :---: |
 | **Lab 01** | Text Preprocessing & Named Entity Recognition | การตัดคำภาษาไทยและอังกฤษ, Part-of-Speech Tagging, และการประยุกต์ใช้งาน spaCy | [เปิด Notebook](02_Labs_Assignments/Week1/01Intro.ipynb) |
+| **Lab 02** | Byte Pair Encoding (BPE) & Subword Tokenization | การทำงานของ BPE Algorithm แบบ Step-by-Step, กราฟการกระจายคำศัพท์, และ Hugging Face Tokenizers | [เปิด Notebook](02_Labs_Assignments/Week2/02nlp_lab.ipynb) |
 
 ---
 
