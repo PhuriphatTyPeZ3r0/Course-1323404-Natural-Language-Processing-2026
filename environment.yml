@@ -12,3 +12,5 @@ dependencies:
       - pythainlp
       - scikit-learn
       - python-dotenv
+      - matplotlib
+      - tokenizers
